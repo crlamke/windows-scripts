@@ -1,0 +1,14 @@
+I occasionally need to create a text formatted listing of the files in a Windows file system directory for inclusion in another document. The script below will create a CSV file with the name, path, file dates, and file size for all files in a directory and its subdirectories. You can remove the –Recurse option to operate on just the current/top-level directory.
+
+To run this script, you:
+
+1. Open Windows Explorer and go to the directory you want to process – e.g. h:\work\dir-to-list
+
+2. In the Explorer address field, type “powershell” and a PowerShell window will open in that directory.
+
+3. Paste in the script below and press Enter to run it.
+
+4. Grab the resulting test.csv file from the directory, check to be sure it has what you need, and send it to whoever needs it.
+ 
+
+dir -Recurse | Select-Object Name, FullName, CreationTime, LastWriteTime, Length | Export-Csv "test.csv"
